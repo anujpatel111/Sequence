@@ -1,0 +1,39 @@
+import java.util.Scanner;
+
+public class LongestCompletePassSequence {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the total number of items: ");
+        int totalItems = scanner.nextInt();
+
+        // Initialize variables
+        int currentSequenceLength = 0;
+        int longestSequenceLength = 0;
+
+        // Iterate  the array
+        for (int i = 0; i < totalItems; i++) {
+            System.out.print("Enter item " + (i + 1) + ": ");
+            String currentItem = scanner.next();
+
+            if ("I".equalsIgnoreCase(currentItem)) {
+                // Reset current  length if "I" is encountered
+                currentSequenceLength = 0;
+            } else {
+                // Increment current  length if completed pass is encountered
+                currentSequenceLength++;
+
+                // Update longest sequence if needed
+                if (currentSequenceLength > longestSequenceLength) {
+                    longestSequenceLength = currentSequenceLength;
+                }
+            }
+        }
+
+        // Output the longest sequence length
+        System.out.println("Longest sequence of complete passes: " + longestSequenceLength);
+
+        // Close the scanner
+        scanner.close();
+    }
+}
